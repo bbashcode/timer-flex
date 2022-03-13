@@ -18,7 +18,14 @@
   const input = process.argv.slice(2);
 
   const timer = function setAlarmTimers (inputArray){
+
+    if(inputArray.length === 0){
+      return;
+    }
     for(let time of inputArray){
+      if(typeof time !== "number" || time < 0){
+        continue;
+      }
       setTimeout(()=>{
         process.stdout.write('\x07');
       }, time)
